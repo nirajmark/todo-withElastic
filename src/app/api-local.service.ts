@@ -8,7 +8,7 @@ export class ApiLocalService {
   constructor() { }
 
   addTodo(todo) {
-    this.listOfTodo.push(todo)
+    this.listOfTodo.push({'text': todo})
   }
 
   getAllTodos() {

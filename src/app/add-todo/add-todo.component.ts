@@ -18,9 +18,14 @@ export class AddTodoComponent implements OnInit {
   }
 
   createTodo() {
-    console.log('Inside create todo = ', this.todo)
-    this.apiLocalService.addTodo(this.todo);
-    this.todo = '';
+    if (this.todo) {
+      console.log('Inside create todo = ', this.todo)
+      this.apiLocalService.addTodo(this.todo);
+      this.todo = '';
+    } else {
+      console.log("Can not create empty todo")
+    }
+    
   }
 
 }

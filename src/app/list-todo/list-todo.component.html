@@ -2,12 +2,12 @@
   <h2>List of Todo </h2>
   <div *ngFor="let todo of todoList; let i = index;">
     <div *ngIf="!editedObj[i]">
-      <h3>{{todo}}</h3>
+      <h3>{{todo.text}}</h3>
       <button (click)="delete(i)">Completed</button>
       <button (click)="edit(i)">Edit</button>
     </div>
     <div *ngIf="editedObj[i]">
-      <input [(ngModel)]="todoList[i]"/>
+      <input [(ngModel)]="todoList[i].text"/>
       <button (click)="done(i)">done</button>
       <button (click)="cancel(i)">cancel</button>
     </div>
