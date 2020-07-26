@@ -14,4 +14,12 @@ export class ApiLocalService {
   getAllTodos() {
     return this.listOfTodo;
   }
+
+  saveAll(todoList) {
+    this.listOfTodo = todoList
+  }
+
+  deleteTodo(index) {
+    this.listOfTodo.splice(index,1)
+  }
 }

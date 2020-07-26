@@ -20,6 +20,7 @@ export class AddTodoComponent implements OnInit {
   createTodo() {
     console.log('Inside create todo = ', this.todo)
     this.apiLocalService.addTodo(this.todo);
+    this.todo = '';
   }
 
 }

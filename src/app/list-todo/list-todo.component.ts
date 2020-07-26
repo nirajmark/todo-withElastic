@@ -8,7 +8,8 @@ import { ApiLocalService } from '../api-local.service'
 })
 export class ListTodoComponent implements OnInit {
   public todoList = [];
-  public editedObj = []
+  public editedObj = [];
+  public isEdited = false;
 
   constructor(private apiLocalServer: ApiLocalService) { }
 
@@ -16,16 +17,31 @@ export class ListTodoComponent implements OnInit {
     this.todoList = this.apiLocalServer.getAllTodos();
   }
 
-  delete(todo) {
-    console.log('deleting = ', todo)
+  delete(index) {
+    console.log('deleting = ', this.todoList[index])
+    this.apiLocalServer.deleteTodo(index)
   }
 
   edit(index) {
-    this.editedObj[index] = true;
+    if (!this.isEdited) {
+      this.editedObj[index] = true;
+      this.isEdited = true;
+    } else {
+      console.log('Already Edit in process')
+    }
+    
   }
 
-  doneEdit(todo) {
-    // this.editedObj[]
+  cancel(index) {
+    console.log('canceling edit')
+    this.editedObj[index] = false;
+    this.isEdited = false;
+  }
+
+  done(index) {
+    console.log('Edit is done')
+    this.apiLocalServer.saveAll(this.todoList)
+    this.cancel(index)
   }
 
 }

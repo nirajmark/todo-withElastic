@@ -3,13 +3,13 @@
   <div *ngFor="let todo of todoList; let i = index;">
     <div *ngIf="!editedObj[i]">
       <h3>{{todo}}</h3>
-      <button (click)="delete(todo)">Completed</button>
+      <button (click)="delete(i)">Completed</button>
       <button (click)="edit(i)">Edit</button>
     </div>
     <div *ngIf="editedObj[i]">
-      <input [(ngModel)]="todo"/>
-      <button (click)="done(todo)">done</button>
-      <button (click)="cancel(todo)">cancel</button>
+      <input [(ngModel)]="todoList[i]"/>
+      <button (click)="done(i)">done</button>
+      <button (click)="cancel(i)">cancel</button>
     </div>
     
   </div>
